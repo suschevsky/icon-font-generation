@@ -1,0 +1,11 @@
+{
+  "name": "icon-font-generation",
+  "version": "1.0.0",
+  "description": "Utility project which helps generate icon font out of SVG icons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Suschevsky <suschevsky.sv@gmail.com>",
+  "license": "MIT"
+}
