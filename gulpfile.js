@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var opn = require('opn');
+var tap = require('gulp-tap');
+var fs = require('fs');
 
 var server = {
     host: 'localhost',
@@ -29,4 +31,19 @@ gulp.task('webserver', ['html'], function() {
 
 gulp.task('opn', function() {
     opn( 'http://' + server.host + ':' + server.port );
+});
+
+gulp.task('write-filenames-to-js-array', function() {
+    var jsFilename = "dist/iconList.js";
+    fs.writeFile(jsFilename);
+
+    var iconList = fs.createWriteStream(jsFilename, {'flags': 'w'});
+
+    iconList.write('var iconList = [];\n');
+
+    var iconFileRegex = new RegExp("[a-z0-9-]*.svg");
+    gulp.src('assets/*.svg')
+        .pipe(tap(function(file, t) {
+            iconList.write('iconList.push("' + file.path.match(iconFileRegex)[0] + '");\n');
+        }));
 });
