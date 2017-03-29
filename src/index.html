@@ -3,12 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>icon-font-generation</title>
+    <style>
+        .btn {
+            background-color: #efefef;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            padding: 10px 15px;
+        }
+    </style>
     <script src="iconList.js"></script>
     <script>
-        console.log('iconList', iconList);
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var result = document.getElementById('result');
+
+            for (var  i = 0; i < iconList.length; i++) {
+                var fileName = iconList[i].toString();
+                var iconName = fileName.substr(0, fileName.length - 4);
+
+                var button = document.createElement('button');
+                button.classList.add('btn');
+                button.innerHTML = '<i class="icon icon-' + iconName + '"></i> ' + iconName.substring(0,1).toUpperCase() + iconName.substring(1);
+
+                result.appendChild(button);
+            }
+        });
     </script>
 </head>
 <body>
     <h1>icon-font-generation</h1>
+    <div id="result"></div>
 </body>
 </html>
