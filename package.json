@@ -4,6 +4,7 @@
   "description": "Utility project which helps generate icon font out of SVG icons",
   "main": "index.js",
   "scripts": {
+    "dev": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sergey Suschevsky <suschevsky.sv@gmail.com>",
